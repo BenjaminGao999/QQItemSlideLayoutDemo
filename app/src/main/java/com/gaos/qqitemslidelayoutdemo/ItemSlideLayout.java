@@ -2,7 +2,6 @@ package com.gaos.qqitemslidelayoutdemo;
 
 import android.content.Context;
 import android.util.AttributeSet;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -16,6 +15,7 @@ public class ItemSlideLayout extends ViewGroup {
     private static final String TAG = "ItemSlideLayout";
     private View mContent;
     private View mDelete;
+    private int mDeleteWidth;
 
     public ItemSlideLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -40,6 +40,8 @@ public class ItemSlideLayout extends ViewGroup {
 
             }
         });
+
+
     }
 
     @Override
@@ -69,7 +71,7 @@ public class ItemSlideLayout extends ViewGroup {
 
         mContent.measure(widthMeasureSpec, heightMeasureSpec);
         LayoutParams mDeleteLayoutParams = mDelete.getLayoutParams();
-        int mDeleteWidth = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.width, MeasureSpec.EXACTLY);
+        mDeleteWidth = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.width, MeasureSpec.EXACTLY);
         int mDeleteHeight = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.height, MeasureSpec.EXACTLY);
         mDelete.measure(mDeleteWidth, mDeleteHeight);
         setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
@@ -86,4 +88,14 @@ public class ItemSlideLayout extends ViewGroup {
 //        Log.d(TAG, "onLayout: b = " + b);
     }
 
+    // SlideDlete的接口
+    public interface OnSlideItemListener {
+        void onOpen(ItemSlideLayout slideDelete);
+        void onClose(ItemSlideLayout slideDelete);
+    }
+    private OnSlideItemListener onSlideItemListener;
+
+    public void setOnSlideItemListener(OnSlideItemListener onSlideItemListener) {
+        this.onSlideItemListener = onSlideItemListener;
+    }
 }
