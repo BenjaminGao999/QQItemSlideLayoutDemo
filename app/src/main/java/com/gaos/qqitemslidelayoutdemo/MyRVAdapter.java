@@ -5,6 +5,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -22,7 +23,7 @@ public class MyRVAdapter extends RecyclerView.Adapter {
     private MyRVViewHolder myRVViewHolder;
 
 
-    public MyRVAdapter(MyOutViewGroup myOutViewGroup) {
+    public MyRVAdapter(RelativeLayout myOutViewGroup) {
 
     }
 

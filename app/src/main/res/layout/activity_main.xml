@@ -1,12 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.gaos.qqitemslidelayoutdemo.MyOutViewGroup xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/activity_main"
     android:layout_width="match_parent"
-    android:id="@+id/my_relative"
+    android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <com.gaos.qqitemslidelayoutdemo.MyRecyclerView
-        android:id="@+id/recycler_view"
+    <com.astuetz.PagerSlidingTabStrip
+        android:id="@+id/tabs"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="48dp"
+        app:pstsIndicatorHeight="2dp"
+        app:pstsShouldExpand="true"
+        app:pstsIndicatorColor="#f5808e"
+        app:pstsDividerColor="@android:color/transparent"
+        app:pstsUnderlineColor="@android:color/transparent"
+        app:pstsTextAllCaps="true" />
 
-</com.gaos.qqitemslidelayoutdemo.MyOutViewGroup>
+    <com.gaos.qqitemslidelayoutdemo.MyViewPager
+        android:id="@+id/vpPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <!--<android.support.v4.view.PagerTabStrip-->
+        <!--android:id="@+id/pager_header"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_gravity="top" />-->
+
+    </com.gaos.qqitemslidelayoutdemo.MyViewPager>
+
+</LinearLayout>
