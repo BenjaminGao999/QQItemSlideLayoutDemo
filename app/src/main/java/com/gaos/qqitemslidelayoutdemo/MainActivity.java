@@ -17,13 +17,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        // Get the ViewPager and set it's PagerAdapter so that it can display items
-        ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
-        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
-
-        // Give the PagerSlidingTabStrip the ViewPager
-        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
-        // Attach the view pager to the tab strip
-        tabsStrip.setViewPager(viewPager);
+//        // Get the ViewPager and set it's PagerAdapter so that it can display items
+//        ViewPager viewPager = (ViewPager) findViewById(R.id.vpPager);
+//        viewPager.setAdapter(new MyPagerAdapter(getSupportFragmentManager()));
+//
+//        // Give the PagerSlidingTabStrip the ViewPager
+//        PagerSlidingTabStrip tabsStrip = (PagerSlidingTabStrip) findViewById(R.id.tabs);
+//        // Attach the view pager to the tab strip
+//        tabsStrip.setViewPager(viewPager);
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.activity_main,new BasicFragment())
+                .commit();
     }
 }

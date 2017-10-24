@@ -61,8 +61,8 @@ public class MyRVAdapter extends RecyclerView.Adapter {
 
         public MyRVViewHolder(View itemView) {
             super(itemView);
-            mViewContent = itemView.findViewById(R.id.ll_slide_content);
-            mViewDelete = itemView.findViewById(R.id.ll_slide_delte);
+            mViewContent = itemView.findViewById(R.id.item_slide_content);
+            mViewDelete = itemView.findViewById(R.id.item_slide_delte);
         }
 
         public void bindItem() {
@@ -82,7 +82,7 @@ public class MyRVAdapter extends RecyclerView.Adapter {
             TextView tvContent = (TextView) itemView.findViewById(R.id.mTvContent);
             tvContent.setText(mDatas.get(position));
             Log.d(TAG, "bindItem: " + mDatas.get(position));
-            itemView.findViewById(R.id.ll_slide_content).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.item_slide_content).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "clicked " + mDatas.get(position), Toast.LENGTH_SHORT).show();

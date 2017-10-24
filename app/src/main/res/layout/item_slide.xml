@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:background="@android:color/black"
     android:layout_height="wrap_content">
 
     <com.gaos.qqitemslidelayoutdemo.ItemSlideLayout
         android:id="@+id/slide_item"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
-
+        android:layout_height="wrap_content">
+        <!--左-->
+        <include
+            android:id="@+id/item_slide_left"
+            layout="@layout/slide_left" />
         <!--文本部分-->
-        <include layout="@layout/slide_content" />
+        <include
+            android:id="@+id/item_slide_content"
+            layout="@layout/slide_content" />
 
         <!--删除部分-->
-        <include layout="@layout/slide_delete" />
+        <include
+            android:id="@+id/item_slide_delte"
+            layout="@layout/slide_delete" />
 
     </com.gaos.qqitemslidelayoutdemo.ItemSlideLayout>
 </RelativeLayout>

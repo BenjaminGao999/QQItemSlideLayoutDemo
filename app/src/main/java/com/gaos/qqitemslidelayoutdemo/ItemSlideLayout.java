@@ -2,8 +2,10 @@ package com.gaos.qqitemslidelayoutdemo;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 
 /**
  * Author:　Created by benjamin
@@ -11,11 +13,12 @@ import android.view.ViewGroup;
  * versionCode:　v2.2
  */
 
-public class ItemSlideLayout extends ViewGroup {
+public class ItemSlideLayout extends FrameLayout {
     private static final String TAG = "ItemSlideLayout";
     private View mContent;
     private View mDelete;
     private int mDeleteWidth;
+    private View mLeft;
 
     public ItemSlideLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -27,8 +30,9 @@ public class ItemSlideLayout extends ViewGroup {
         if (getChildCount() < 2) {
             throw new RuntimeException("至少要有2个child view, 当前只有" + getChildCount() + "个");
         }
-        mContent = getChildAt(0);
-        mDelete = getChildAt(1);
+        mLeft = getChildAt(0);
+        mContent = getChildAt(1);
+        mDelete = getChildAt(2);
         mContent.addOnLayoutChangeListener(new OnLayoutChangeListener() {
             @Override
             public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
@@ -63,22 +67,26 @@ public class ItemSlideLayout extends ViewGroup {
 
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
-//        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+        super.onMeasure(widthMeasureSpec, heightMeasureSpec);
 //        Log.d(TAG, "onMeasure: widthMeasureSpec = " + MeasureSpec.getSize(widthMeasureSpec));
 //        Log.d(TAG, "onMeasure: heightMeasureSpec = " + MeasureSpec.getSize(heightMeasureSpec));
 //        Log.d(TAG, "onMeasure: widthMeasureSpec = " + MeasureSpec.getMode(widthMeasureSpec));
 //        Log.d(TAG, "onMeasure: heightMeasureSpec = " + MeasureSpec.getMode(heightMeasureSpec));
-
-        mContent.measure(widthMeasureSpec, heightMeasureSpec);
-        LayoutParams mDeleteLayoutParams = mDelete.getLayoutParams();
-        mDeleteWidth = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.width, MeasureSpec.EXACTLY);
-        int mDeleteHeight = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.height, MeasureSpec.EXACTLY);
-        mDelete.measure(mDeleteWidth, mDeleteHeight);
-        setMeasuredDimension(widthMeasureSpec, heightMeasureSpec);
+//
+//        mContent.measure(widthMeasureSpec, MeasureSpec.UNSPECIFIED);
+//        int mContentMeasuredHeight = mContent.getMeasuredHeight();
+//        Log.d(TAG, "onMeasure: mContentMeasuredHeight = " + mContentMeasuredHeight);
+//        LayoutParams mDeleteLayoutParams = (LayoutParams) mDelete.getLayoutParams();
+//        mDeleteWidth = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.width, MeasureSpec.EXACTLY);
+//        int mDeleteHeight = MeasureSpec.makeMeasureSpec(mDeleteLayoutParams.height, MeasureSpec.EXACTLY);
+//        mDelete.measure(mDeleteWidth, mDeleteHeight);
+//        setMeasuredDimension(widthMeasureSpec, mContentMeasuredHeight);
     }
 
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+        super.onLayout(changed, l, t, r, b);
+        mLeft.layout(-mLeft.getMeasuredWidth(), t, 0, b);
         mContent.layout(l, t, r, b);
         mDelete.layout(r, t, r + mDelete.getMeasuredWidth(), b);
 //        invalidate();
@@ -86,13 +94,18 @@ public class ItemSlideLayout extends ViewGroup {
 //        Log.d(TAG, "onLayout: t = " + t);
 //        Log.d(TAG, "onLayout: r = " + r);
 //        Log.d(TAG, "onLayout: b = " + b);
+//        mLeft.layout(l, t, mLeft.getMeasuredWidth(), b);
+//        mContent.layout(l + mLeft.getMeasuredWidth(), t, l + mLeft.getMeasuredWidth() + mContent.getMeasuredWidth(), b);
+//        mDelete.layout(l + mLeft.getMeasuredWidth() + mContent.getMeasuredWidth(), t, l + mLeft.getMeasuredWidth() + mContent.getMeasuredWidth() + mDelete.getMeasuredWidth(), b);
     }
 
     // SlideDlete的接口
     public interface OnSlideItemListener {
         void onOpen(ItemSlideLayout slideDelete);
+
         void onClose(ItemSlideLayout slideDelete);
     }
+
     private OnSlideItemListener onSlideItemListener;
 
     public void setOnSlideItemListener(OnSlideItemListener onSlideItemListener) {

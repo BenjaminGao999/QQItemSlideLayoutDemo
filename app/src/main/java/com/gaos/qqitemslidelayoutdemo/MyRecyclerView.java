@@ -1,7 +1,6 @@
 package com.gaos.qqitemslidelayoutdemo;
 
 import android.animation.ValueAnimator;
-import android.app.job.JobInfo;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -93,8 +92,8 @@ public class MyRecyclerView extends RecyclerView {
                         }
                     } else if (itemSlideHasJudged) {// item sliding
                         if (childCapture != null) {
-                            contentView = childCapture.findViewById(R.id.ll_slide_content);
-                            deleteView = childCapture.findViewById(R.id.ll_slide_delte);
+                            contentView = childCapture.findViewById(R.id.item_slide_content);
+                            deleteView = childCapture.findViewById(R.id.item_slide_delte);
                             int contentViewLeft = contentView.getLeft();
                             int contentViewTop = contentView.getTop();
                             int contentViewRight = contentView.getRight();

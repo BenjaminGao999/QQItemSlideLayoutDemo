@@ -6,28 +6,28 @@
     android:orientation="vertical"
     android:layout_height="match_parent">
 
-    <com.astuetz.PagerSlidingTabStrip
-        android:id="@+id/tabs"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        app:pstsIndicatorHeight="2dp"
-        app:pstsShouldExpand="true"
-        app:pstsIndicatorColor="#f5808e"
-        app:pstsDividerColor="@android:color/transparent"
-        app:pstsUnderlineColor="@android:color/transparent"
-        app:pstsTextAllCaps="true" />
-
-    <com.gaos.qqitemslidelayoutdemo.MyViewPager
-        android:id="@+id/vpPager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <!--<android.support.v4.view.PagerTabStrip-->
-        <!--android:id="@+id/pager_header"-->
+    <!--<com.astuetz.PagerSlidingTabStrip-->
+        <!--android:id="@+id/tabs"-->
         <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_gravity="top" />-->
+        <!--android:layout_height="48dp"-->
+        <!--app:pstsIndicatorHeight="2dp"-->
+        <!--app:pstsShouldExpand="true"-->
+        <!--app:pstsIndicatorColor="#f5808e"-->
+        <!--app:pstsDividerColor="@android:color/transparent"-->
+        <!--app:pstsUnderlineColor="@android:color/transparent"-->
+        <!--app:pstsTextAllCaps="true" />-->
 
-    </com.gaos.qqitemslidelayoutdemo.MyViewPager>
+    <!--<com.gaos.qqitemslidelayoutdemo.MyViewPager-->
+        <!--android:id="@+id/vpPager"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content">-->
+
+        <!--&lt;!&ndash;<android.support.v4.view.PagerTabStrip&ndash;&gt;-->
+        <!--&lt;!&ndash;android:id="@+id/pager_header"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_width="match_parent"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_height="wrap_content"&ndash;&gt;-->
+        <!--&lt;!&ndash;android:layout_gravity="top" />&ndash;&gt;-->
+
+    <!--</com.gaos.qqitemslidelayoutdemo.MyViewPager>-->
 
 </LinearLayout>
