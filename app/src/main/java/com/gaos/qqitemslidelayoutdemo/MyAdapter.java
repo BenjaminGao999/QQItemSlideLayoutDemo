@@ -3,11 +3,14 @@ package com.gaos.qqitemslidelayoutdemo;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.gaos.qqitemslidelayoutdemo.interfaces.IViewObservable;
 
 import java.util.ArrayList;
 
@@ -17,13 +20,13 @@ import java.util.ArrayList;
  * versionCode:　v2.2
  */
 
-public class MyRVAdapter extends RecyclerView.Adapter {
-    private static final String TAG = "MyRVAdapter";
+public class MyAdapter extends RecyclerView.Adapter {
+    private static final String TAG = "MyAdapter";
     private ArrayList<String> mDatas;
-    private MyRVViewHolder myRVViewHolder;
+    private MyViewHolder myViewHolder;
 
 
-    public MyRVAdapter(RelativeLayout myOutViewGroup) {
+    public MyAdapter(RelativeLayout myOutViewGroup) {
 
     }
 
@@ -34,15 +37,15 @@ public class MyRVAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        myRVViewHolder = new MyRVViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slide, parent, false));
-        myRVViewHolder.bindItem();
-        return myRVViewHolder;
+        myViewHolder = new MyViewHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_slide, parent, false));
+        myViewHolder.bindItem();
+        return myViewHolder;
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
 
-        ((MyRVViewHolder) holder).bindItem(position);
+        ((MyViewHolder) holder).bindItem(position);
     }
 
     @Override
@@ -54,39 +57,58 @@ public class MyRVAdapter extends RecyclerView.Adapter {
         mDatas = datas;
     }
 
-    class MyRVViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
 
         private View mViewContent;
         private View mViewDelete;
+        private View itemView;
+        private int position;
 
-        public MyRVViewHolder(View itemView) {
+        public MyViewHolder(View itemView) {
             super(itemView);
+            this.itemView = itemView;
             mViewContent = itemView.findViewById(R.id.item_slide_content);
             mViewDelete = itemView.findViewById(R.id.item_slide_delte);
+
+            initListener();
+        }
+
+        private void initListener() {
+            itemView.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+
+                    // TODO: 2018/4/18 向外发布  “我” 正在被手指按住
+                    if (event.getAction() == MotionEvent.ACTION_DOWN) {
+                        if (IViewObservable.newInstance().iViewSubscribe != null) {
+                            IViewObservable.newInstance().iViewSubscribe.onObserve(itemView);
+                        }
+                    }
+
+                    return false;
+                }
+            });
         }
 
         public void bindItem() {
             itemView.addOnLayoutChangeListener(new View.OnLayoutChangeListener() {
                 @Override
                 public void onLayoutChange(View v, int left, int top, int right, int bottom, int oldLeft, int oldTop, int oldRight, int oldBottom) {
-//                    Log.d(TAG, "onLayoutChange: left = " + left);
-//                    Log.d(TAG, "onLayoutChange: left = " + left);
-//                    Log.d(TAG, "onLayoutChange: top = " + top);
-//                    Log.d(TAG, "onLayoutChange: right = " + right);
-//                    Log.d(TAG, "onLayoutChange: bottom = " + bottom);
+
                 }
             });
         }
 
         public void bindItem(final int position) {
+            this.position = position;
             TextView tvContent = (TextView) itemView.findViewById(R.id.mTvContent);
             tvContent.setText(mDatas.get(position));
             Log.d(TAG, "bindItem: " + mDatas.get(position));
-            itemView.findViewById(R.id.item_slide_content).setOnClickListener(new View.OnClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "clicked " + mDatas.get(position), Toast.LENGTH_SHORT).show();
-                    Log.d(TAG, "onClick: item clicked");
+                    Log.i(TAG, "onClick: ");
                 }
             });
         }

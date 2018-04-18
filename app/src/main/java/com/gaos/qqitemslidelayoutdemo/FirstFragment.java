@@ -10,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.gaos.qqitemslidelayoutdemo.interfaces.IViewObservable;
+
 import java.util.ArrayList;
 
 public class FirstFragment extends Fragment {
@@ -47,6 +49,7 @@ public class FirstFragment extends Fragment {
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
         mRecyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         RelativeLayout myOutViewGroup = (RelativeLayout) view.findViewById(R.id.my_relative);
 
@@ -56,14 +59,14 @@ public class FirstFragment extends Fragment {
             datas.add("Item " + i);
         }
 
-        MyRVAdapter myRVAdapter = new MyRVAdapter(myOutViewGroup);
-        myRVAdapter.setData(datas);
+        MyAdapter myAdapter = new MyAdapter(myOutViewGroup);
+        myAdapter.setData(datas);
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(linearLayoutManager);
 
-        mRecyclerView.addItemDecoration(new MyRVItemDecoration());
+        mRecyclerView.addItemDecoration(new MyItemDecoration());
 
-        mRecyclerView.setAdapter(myRVAdapter);
+        mRecyclerView.setAdapter(myAdapter);
     }
 }

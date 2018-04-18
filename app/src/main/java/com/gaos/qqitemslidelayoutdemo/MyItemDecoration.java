@@ -10,7 +10,7 @@ import android.view.View;
  * DATE :  2017/10/18 18:02
  * versionCode:　v2.2
  */
-public class MyRVItemDecoration extends RecyclerView.ItemDecoration {
+public class MyItemDecoration extends RecyclerView.ItemDecoration {
 
     @Override
     public void getItemOffsets(Rect outRect, View view, RecyclerView parent, RecyclerView.State state) {

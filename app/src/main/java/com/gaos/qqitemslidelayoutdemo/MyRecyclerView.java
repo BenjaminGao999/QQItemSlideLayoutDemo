@@ -278,51 +278,5 @@ public class MyRecyclerView extends RecyclerView {
         return event;
     }
 
-//    ViewHolder viewHolder = findViewHolderForAdapterPosition(i);
-//    if (viewHolder != null) {
-//        if (viewHolder.itemView != null) {
-//            View itemView = viewHolder.itemView;
-//            int itemViewWidth = itemView.getWidth();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewWidth = " + itemViewWidth);
-//            int itemViewHeight = itemView.getHeight();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewHeight = " + itemViewHeight);
-//            int itemViewLeft = itemView.getLeft();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewLeft = " + itemViewLeft);
-//            int itemViewTop = itemView.getTop();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewTop = " + itemViewTop);
-//            int itemViewRight = itemView.getRight();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewRight = " + itemViewRight);
-//            int itemViewBottom = itemView.getBottom();
-//            Log.d(TAG, "dispatchTouchEvent: itemViewBottom = " + itemViewBottom);
-//        }
-//    } else {
-//        Log.d(TAG, "dispatchTouchEvent: viewholder 是空的");
-//    }
-
-//    View slideItem = childCapture.findViewById(R.id.slide_item);
-//                        int left = (int) (slideItem.getLeft() + disX);
-//                        int slideItemTop = slideItem.getTop();
-//                        int right = (int) (slideItem.getRight() + disX);
-//                        int slideItemBottom = slideItem.getBottom();
-//                        Log.d(TAG, "dispatchTouchEvent: left = " + left);
-//                        Log.d(TAG, "dispatchTouchEvent: top = " + slideItemTop);
-//                        Log.d(TAG, "dispatchTouchEvent: right = " + right);
-//                        Log.d(TAG, "dispatchTouchEvent: bottom = " + slideItemBottom);
-//                        slideItem.layout(left, slideItemTop, right, slideItemBottom);
-//                        slideItem.invalidate();
-//                        Log.d(TAG, "dispatchTouchEvent: capture view ");
-
-//                        int childCaptureLeft = childCapture.getLeft();
-//                        int childCaptureTop = childCapture.getTop();
-//                        int childCaptureRight = childCapture.getRight();
-//                        int childCaptureBottom = childCapture.getBottom();
-//                        Log.d(TAG, "dispatchTouchEvent: childCaptureLeft = " + childCaptureLeft);
-//                        Log.d(TAG, "dispatchTouchEvent: childCaptureTop = " + childCaptureTop);
-//                        Log.d(TAG, "dispatchTouchEvent: childCaptureRight = " + childCaptureRight);
-//                        Log.d(TAG, "dispatchTouchEvent: childCaptureBottom = " + childCaptureBottom);
-//                        int left = (int) (childCaptureLeft + disX);
-//                        int right = (int) (childCaptureRight + disX);
-//                        childCapture.layout(left,childCaptureTop, right,childCaptureBottom);
-//                        invalidate();
 
 }
