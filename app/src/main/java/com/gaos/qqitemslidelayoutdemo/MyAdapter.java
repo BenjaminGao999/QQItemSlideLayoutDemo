@@ -97,6 +97,8 @@ public class MyAdapter extends RecyclerView.Adapter {
 
                 }
             });
+
+
         }
 
         public void bindItem(final int position) {
@@ -108,7 +110,7 @@ public class MyAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onClick(View v) {
                     Toast.makeText(v.getContext(), "clicked " + mDatas.get(position), Toast.LENGTH_SHORT).show();
-                    Log.i(TAG, "onClick: ");
+                    Log.i(TAG, "onClick: clicked position = "+position);
                 }
             });
         }
